@@ -1,7 +1,7 @@
 {
   "name": "@fugood/skills",
   "version": "1.7.2-ctor.1",
-  "description": "Fork of the skills CLI (vercel-labs/skills) with BRICKS CTOR support. Telemetry is opt-in.",
+  "description": "Fork of the skills CLI (vercel-labs/skills) with BRICKS CTOR support.",
   "type": "module",
   "bin": {
     "skills": "./bin/cli.mjs",

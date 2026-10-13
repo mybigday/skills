@@ -7,7 +7,6 @@ describe('direct telemetry endpoints', () => {
   beforeEach(() => {
     vi.stubEnv('DO_NOT_TRACK', '');
     vi.stubEnv('DISABLE_TELEMETRY', '');
-    vi.stubEnv('SKILLS_TELEMETRY', '1');
     vi.stubGlobal('fetch', fetchMock);
     fetchMock.mockReset().mockResolvedValue({ ok: true, json: async () => ({}) });
   });
@@ -34,13 +33,6 @@ describe('direct telemetry endpoints', () => {
 
   it.each(['DO_NOT_TRACK', 'DISABLE_TELEMETRY'])('honors %s for both endpoints', async (env) => {
     vi.stubEnv(env, '1');
-    track({ event: 'install', source: 'mattpocock/skills', skills: 'ask-matt' });
-    expect(await fetchAuditData('mattpocock/skills', ['ask-matt'])).toBeNull();
-    expect(fetchMock).not.toHaveBeenCalled();
-  });
-
-  it('is disabled by default when SKILLS_TELEMETRY is not set', async () => {
-    vi.stubEnv('SKILLS_TELEMETRY', '');
     track({ event: 'install', source: 'mattpocock/skills', skills: 'ask-matt' });
     expect(await fetchAuditData('mattpocock/skills', ['ask-matt'])).toBeNull();
     expect(fetchMock).not.toHaveBeenCalled();
