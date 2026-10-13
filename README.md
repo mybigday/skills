@@ -6,13 +6,14 @@ The CLI for the open agent skills ecosystem.
 Supports **OpenCode**, **Claude Code**, **Codex**, **Cursor**, and [76 more](#supported-agents).
 <!-- agent-list:end -->
 
-<p>
-  <a href="https://vercel.com/labs#labs-products"><img alt="Vercel Labs Product" src="https://img.shields.io/badge/LABS-PRODUCT-0a0a0a.svg?style=for-the-badge&amp;logo=Vercel&amp;labelColor=000000" height="28"></a>
-  <a href="https://www.npmjs.com/package/skills"><img alt="npm version: skills" src="https://img.shields.io/npm/v/skills.svg?style=for-the-badge&amp;labelColor=000000" height="28"></a>
-  <a href="https://github.com/vercel-labs/skills/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/vercel-labs/skills.svg?style=for-the-badge&amp;labelColor=000000" height="28"></a>
-  <a href="https://www.npmjs.com/package/skills"><img alt="npm downloads per month: skills" src="https://img.shields.io/npm/dm/skills.svg?style=for-the-badge&amp;labelColor=000000&amp;label=npm%20downloads" height="28"></a>
-  <a href="https://skills.sh/vercel-labs/skills"><img alt="skills.sh" src="https://skills.sh/b/vercel-labs/skills?style=for-the-badge" height="28"></a>
-</p>
+> [!NOTE]
+> This is `@fugood/skills`, a fork of [vercel-labs/skills](https://github.com/vercel-labs/skills) maintained by BRICKS.
+> It adds [BRICKS CTOR](https://ctor.bricks.tools/) support ahead of upstream ([vercel-labs/skills#2470](https://github.com/vercel-labs/skills/pull/2470)) and makes telemetry opt-in.
+> It is not an official Vercel release. Commands below work the same with `npx @fugood/skills` in place of `npx skills`.
+>
+> ```bash
+> npx @fugood/skills add mybigday/bricks-ctor-agent-skills -a bricks-ctor
+> ```
 
 ## Install a Skill
 
@@ -537,6 +538,7 @@ Ensure you have write access to the target directory.
 | Variable                  | Description                                                                |
 | ------------------------- | -------------------------------------------------------------------------- |
 | `INSTALL_INTERNAL_SKILLS` | Set to `1` or `true` to show and install skills marked as `internal: true` |
+| `SKILLS_TELEMETRY`        | Set to `1` to opt in to anonymous usage telemetry (off by default)         |
 | `DISABLE_TELEMETRY`       | Set to disable anonymous usage telemetry                                   |
 | `DO_NOT_TRACK`            | Alternative way to disable telemetry                                       |
 | `GITHUB_TOKEN`            | Optional explicit token for authenticated GitHub API requests              |
@@ -549,9 +551,9 @@ INSTALL_INTERNAL_SKILLS=1 npx skills add vercel-labs/agent-skills --list
 
 ## Telemetry
 
-This CLI collects anonymous usage data to help improve the tool. No personal information is collected.
+In `@fugood/skills`, telemetry and security-audit requests are off by default. Set `SKILLS_TELEMETRY=1` to opt in; when enabled, the CLI collects anonymous usage data to help improve the tool. No personal information is collected.
 
-GitHub repository and skill identifiers are sent only for repositories that GitHub positively confirms are public. Other remote source types may include source and skill identifiers in install telemetry because their visibility cannot be checked through GitHub. Security-audit requests remain limited to confirmed-public GitHub repositories. Set `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1` to disable both entirely.
+GitHub repository and skill identifiers are sent only for repositories that GitHub positively confirms are public. Other remote source types may include source and skill identifiers in install telemetry because their visibility cannot be checked through GitHub. Security-audit requests remain limited to confirmed-public GitHub repositories. `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1` always disables both entirely.
 
 ## Related Links
 

@@ -1,7 +1,7 @@
 {
-  "name": "skills",
-  "version": "1.7.2",
-  "description": "The open agent skills ecosystem",
+  "name": "@fugood/skills",
+  "version": "1.7.2-ctor.1",
+  "description": "Fork of the skills CLI (vercel-labs/skills) with BRICKS CTOR support. Telemetry is opt-in.",
   "type": "module",
   "bin": {
     "skills": "./bin/cli.mjs",
@@ -119,11 +119,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vercel-labs/skills.git"
+    "url": "git+https://github.com/mybigday/skills.git"
   },
-  "homepage": "https://github.com/vercel-labs/skills#readme",
+  "homepage": "https://github.com/mybigday/skills#readme",
   "bugs": {
-    "url": "https://github.com/vercel-labs/skills/issues"
+    "url": "https://github.com/mybigday/skills/issues"
   },
   "author": "",
   "license": "MIT",
@@ -149,5 +149,8 @@
   "dependencies": {
     "tar": "^7.5.20",
     "yaml": "^2.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

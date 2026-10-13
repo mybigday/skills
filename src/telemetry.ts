@@ -83,8 +83,11 @@ function isCI(): boolean {
   );
 }
 
+// @fugood/skills: telemetry is opt-in. Set SKILLS_TELEMETRY=1 to enable;
+// DISABLE_TELEMETRY / DO_NOT_TRACK still take precedence.
 function isEnabled(): boolean {
-  return !process.env.DISABLE_TELEMETRY && !process.env.DO_NOT_TRACK;
+  if (process.env.DISABLE_TELEMETRY || process.env.DO_NOT_TRACK) return false;
+  return process.env.SKILLS_TELEMETRY === '1' || process.env.SKILLS_TELEMETRY === 'true';
 }
 
 export function setVersion(version: string): void {

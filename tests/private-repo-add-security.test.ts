@@ -98,6 +98,7 @@ describe('private repository installs', () => {
 
   afterEach(async () => {
     process.chdir(originalCwd);
+    delete process.env.SKILLS_TELEMETRY;
     if (originalGitHubToken === undefined) delete process.env.GITHUB_TOKEN;
     else process.env.GITHUB_TOKEN = originalGitHubToken;
     if (originalGhToken === undefined) delete process.env.GH_TOKEN;
@@ -159,6 +160,7 @@ describe('private repository installs', () => {
 
   it('installs from another Git host and preserves opted-in non-GitHub telemetry', async () => {
     delete process.env.DISABLE_TELEMETRY;
+    process.env.SKILLS_TELEMETRY = '1';
     const source = 'git@gitlab.com:company/platform/private-skills.git';
 
     await runAdd([source], {
